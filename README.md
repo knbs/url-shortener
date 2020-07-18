@@ -9,11 +9,12 @@ Its function is only create a shorter version of the an URL storing it as a docu
 ### Clone the project and
 ```bash
 git clone https://github.com/knbs/url-shortener.git
+npm install #node_modules are served from the host machine
 ```
 ### Run docker-compose
 ```bash
 docker-compose build
-docker-compose up
+docker-compose up -d
 ```
 This will create and run the image for mongo database and for the app. You should be able to access at http://localhost:8080/
 
