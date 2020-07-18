@@ -4,5 +4,5 @@ module.exports = {
     port: 9000
   },
   lintOnSave: false,
-  outputDir: "./dist/client"
-};
+  outputDir: './dist/client'
+}

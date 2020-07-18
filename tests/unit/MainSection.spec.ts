@@ -9,10 +9,10 @@ describe('MainSection.vue', () => {
     const wrapper = shallowMount(MainSection, {
       attachTo: '#root'
     })
-    const urlValue = 'htttp://example.com';
-    wrapper.setData({urlValue})
+    const urlValue = 'htttp://example.com'
+    wrapper.setData({ urlValue })
     wrapper.find('button').trigger('click')
-    expect(wrapper.emitted('callBack')).toHaveLength(1);
-    expect(wrapper.emitted('callBack')?.[0][0]).toBe(urlValue);
+    expect(wrapper.emitted('callBack')).toHaveLength(1)
+    expect(wrapper.emitted('callBack')?.[0][0]).toBe(urlValue)
   })
 })

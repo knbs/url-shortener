@@ -17,33 +17,33 @@ import MainSection from './components/MainSection.vue'
   }
 })
 export default class App extends Vue {
-  private urlList : Array<object> = [];
+  private urlList: Array<object> = [];
 
   mounted () {
     fetch('/api/url')
       .then(async (response) => {
-        this.urlList = await response.json();
+        this.urlList = await response.json()
       })
       .catch(function (err) {
-        console.warn('Something went wrong.', err);
-      });
+        console.warn('Something went wrong.', err)
+      })
   }
 
-  createUrl(fullUrl: String) {
-    console.log(fullUrl);
-    let urlList = this.urlList;
-    
+  createUrl (fullUrl: string) {
+    console.log(fullUrl)
+    const urlList = this.urlList
+
     fetch('/api/url', {
       method: 'POST',
-      body: JSON.stringify({fullUrl}),
-      headers:{
+      body: JSON.stringify({ fullUrl }),
+      headers: {
         'Content-Type': 'application/json'
       }
     }).then(async function (response: Response) {
-      urlList.push(await response.json());
+      urlList.push(await response.json())
     }).catch(function (err) {
-      console.warn('Something went wrong.', err);
-    });
+      console.warn('Something went wrong.', err)
+    })
   }
 }
 </script>

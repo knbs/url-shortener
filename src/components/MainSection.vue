@@ -20,16 +20,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Emit } from 'vue-property-decorator'
+import { Component, Vue, Emit } from 'vue-property-decorator'
 
 @Component
 export default class MainSection extends Vue {
     urlValue = '';
 
     @Emit('callBack')
-    onClickButton(event: Event) {
-        event.preventDefault();
-        return this.urlValue;
+    onClickButton (event: Event) {
+      event.preventDefault()
+      return this.urlValue
     }
 }
 </script>

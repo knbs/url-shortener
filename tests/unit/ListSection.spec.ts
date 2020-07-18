@@ -3,10 +3,10 @@ import ListSection from '@/components/ListSection.vue'
 
 describe('ListSection.vue', () => {
   it('Renders list when props.items passed', () => {
-    const _id = 'asd12asd';
-    const fullUrl = 'https://example.com';
+    const _id = 'asd12asd'
+    const fullUrl = 'https://example.com'
     const wrapper = shallowMount(ListSection, {
-      propsData: { items: [{_id, fullUrl}] }
+      propsData: { items: [{ _id, fullUrl }] }
     })
     expect(wrapper.find('.url-item').exists()).toBeTruthy()
     expect(wrapper.find('.url-item').text()).toMatch(new RegExp(`${_id}`))
