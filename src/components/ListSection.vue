@@ -1,10 +1,10 @@
 <template>
   <div class="ListSection">
     <ul>
-      <li class="url-item" v-for="item in items" :key="item.id">
+      <li class="url-item" v-for="item in items" :key="item.shortId">
         <b>Short URL: </b>
-        <a :href="'https://pbid.io/'+ item._id">
-          https://pbid.io/{{ item._id }}
+        <a :href="'https://pbid.io/'+ item.shortId">
+          https://pbid.io/{{ item.shortId }}
         </a> <br/>
         <b>Full URL: </b>
         {{ item.fullUrl }}

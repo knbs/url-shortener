@@ -1,23 +1,25 @@
+import mongoose from 'mongoose';
 import { Request, Response } from 'express';
-import { ShortUrlModel } from '../database'
-import uniqid from 'uniqid';
 
-export const getAll = (req: Request, res: Response) => {
-  ShortUrlModel.find({}, function(err, items) {
+export default class Home {
+  private shortUrlModel:mongoose.Model<any>;
+
+  constructor(shortUrlModel:mongoose.Model<any>) {
+    this.shortUrlModel = shortUrlModel;
+  }
+
+  public getAll = async (req: Request, res: Response) => {
+    const items = await this.shortUrlModel.find({});
     res.json(items);
-  });
-};
+  }
 
-export const create = (req: Request, res: Response) => {
-  const newItem = {
-    _id: uniqid.time(),
-    fullUrl: req.body.fullUrl
-  };
+  public create = async (req: Request, res: Response) => {
+    const newItem = {
+      fullUrl: req.body.fullUrl
+    };
 
-  const shortUrl = new ShortUrlModel(newItem);
-  shortUrl.save().then(() => {
-    res.json(newItem);
-  }).catch((error) => {
-    console.log(error);
-  });
-};
+    const shortUrl = new this.shortUrlModel(newItem);
+    res.json(await shortUrl.save());
+  }
+
+}
