@@ -40,7 +40,9 @@ export default class App extends Vue {
         'Content-Type': 'application/json'
       }
     }).then(async function (response: Response) {
-      urlList.push(await response.json())
+      if(response.status === 200) {
+        urlList.push(await response.json())
+      }
     }).catch(function (err) {
       console.warn('Something went wrong.', err)
     })

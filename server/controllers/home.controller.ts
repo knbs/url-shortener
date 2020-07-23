@@ -17,9 +17,13 @@ export default class Home {
     const newItem = {
       fullUrl: req.body.fullUrl
     };
-
-    const shortUrl = new this.shortUrlModel(newItem);
-    res.json(await shortUrl.save());
+    try{
+      throw new Error('oops');
+      const shortUrl = new this.shortUrlModel(newItem);
+      res.json(await shortUrl.save());
+    } catch(error) {
+      res.status(500).json(error.message)
+      console.log(error)
+    }
   }
-
 }
